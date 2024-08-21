@@ -1,0 +1,65 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-14 00:29:36
+ * @LastEditTime: 2021-03-14 00:42:10
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /agla-fe-components-8.50/Users/liwenzhi/study/es6New/15.object_assign.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.assign</title>
+  </head>
+  <body>
+
+    <script>
+      let arr = [
+        {
+            "currencyCode": "CNY",
+            "currencyName": "人民币",
+            "curDate": "2021-03",
+            "currencyContent": 1
+        },
+        {
+            "currencyCode": "EUR",
+            "currencyName": "欧元",
+            "curDate": "2021-03",
+            "currencyContent": 7.9371
+        },
+        {
+            "currencyCode": "GBP",
+            "currencyName": "英镑",
+            "curDate": "2021-03",
+            "currencyContent": 8.7896
+        },
+        {
+            "currencyCode": "HKD",
+            "currencyName": "港元",
+            "curDate": "2021-03",
+            "currencyContent": 0.8331
+        },
+        {
+            "currencyCode": "JPY",
+            "currencyName": "日元",
+            "curDate": "2021-03",
+            "currencyContent": 0.0596
+        },
+        {
+            "currencyCode": "USD",
+            "currencyName": "美元",
+            "curDate": "2021-03",
+            "currencyContent": 6.4904
+        }
+    ];
+    let curKindObj = {}
+    arr.forEach(item=>{
+      curKindObj[item.currencyCode] = item.currencyContent
+    })
+    console.log('curKindObj: ',curKindObj)
+
+    </script>
+  </body>
+</html>

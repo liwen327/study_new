@@ -1,0 +1,10 @@
+.ClearBtn{
+  background-color: red;
+  color: white;
+}
+.footer_wrap{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+}
