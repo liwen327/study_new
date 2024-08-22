@@ -1,0 +1,124 @@
+
+get请求
+http://127.0.0.1:9200/ma/sys/common/findParent
+
+传参
+acctCode: *
+agencyCode: 000001
+accsCode: 001
+eleCode: CURRENT
+menuId: 0db80478-4d25-4251-8ed0-3d085a7091a8
+roleId: 9091
+rueicode: c12e01f2a13ff5587e1e9e4aedb8242d
+ajax: 1
+chrCode: 1002010401
+agencyCode: 000001
+rgCode: 87
+setYear: 2022
+
+返回值
+{
+    "msg": "查询数据成功",
+    "flag": "success",
+    "data": {
+        "accItemCode": "",
+        "accsCode": "",
+        "acctCode": "*",
+        "agencyCode": "000001",
+        "agencyCtrllevel2": "",
+        "allowAddsub": "1",
+        "allowAddsubName": "允许增加下级",
+        "allowStatus": 0,
+        "assCode": "",
+        "attribute": "23",
+        "attributeName": "",
+        "bank": "",
+        "bankAcc": "",
+        "businessCardNo": "",
+        "businessSco": "",
+        "businessTaxNo": "",
+        "canAddsub": "",
+        "chrCode": "0001",
+        "chrCode1": "00",
+        "chrCode2": "",
+        "chrCode3": "",
+        "chrCode4": "",
+        "chrCode5": "",
+        "chrCode6": "",
+        "chrCode7": "",
+        "chrCode8": "",
+        "chrCode9": "",
+        "chrFullname": "测试/测试体制内单位",
+        "chrId": "f82502cbe257468a9d626e63dd31290a",
+        "chrId1": "9db43fa3f0c74093967b708847cbe27d",
+        "chrId2": "",
+        "chrId3": "",
+        "chrId4": "",
+        "chrId5": "",
+        "chrId6": "",
+        "chrId7": "",
+        "chrId8": "",
+        "chrId9": "",
+        "chrName": "测试体制内单位",
+        "code": "",
+        "codeName": "",
+        "commAddr": "",
+        "companyKind": "",
+        "contact": "",
+        "corpRepr": "",
+        "createDate": "2022-03-02 11:05:03",
+        "createUser": "9092",
+        "currentType": "",
+        "dataFromModule": "",
+        "distCode": "360000000",
+        "distCodeName": "",
+        "distributeCtrllevel": "",
+        "eleCode": "",
+        "email": "",
+        "enabled": 1,
+        "enabledName": "启用",
+        "fax": "",
+        "field1": "",
+        "field2": "",
+        "field3": "",
+        "field4": "",
+        "field5": "",
+        "fromRgCode": "",
+        "id": "",
+        "isCheckName": "",
+        "isCustomer": "",
+        "isDeleted": 0,
+        "isLeaf": 1,
+        "isReportData": "",
+        "isStandard": 0,
+        "isSupplier": "",
+        "issueAcco": "",
+        "lastVer": 1,
+        "latestOpDate": "2022-03-02 11:05:03",
+        "latestOpUser": "9092",
+        "leafNode": false,
+        "levelNum": 2,
+        "linkSystem": "",
+        "maEleCurrentAccountList": [],
+        "maTalbeName": "",
+        "menuId": "",
+        "name": "",
+        "oldChrCode": "",
+        "outSystem": false,
+        "parent": null,
+        "parentCode": "00",
+        "parentCodeName": "",
+        "parentId": "9db43fa3f0c74093967b708847cbe27d",
+        "phoneNum": "",
+        "protypeCode": "",
+        "protypeName": "",
+        "rgCode": "87",
+        "saveType": "",
+        "setYear": 2022,
+        "srcAgencyCode": "87_000001",
+        "supplierScale": "",
+        "supplierType": "",
+        "updateDate": "",
+        "useCount": 0
+    }
+}
