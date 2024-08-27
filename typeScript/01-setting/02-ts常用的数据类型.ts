@@ -2,7 +2,7 @@
  * @Author: liwz
  * @Date: 2024-08-26 15:11:30
  * @LastEditors: liwz
- * @LastEditTime: 2024-08-27 11:13:55
+ * @LastEditTime: 2024-08-27 15:06:45
  * @FilePath: /study_new/typeScript/01-setting/02-ts常用的数据类型.ts
  * @Description:
  *
@@ -46,8 +46,8 @@ x = <string>bc
 // 1、不要把变量赋值为never
 let d: never
 
-d = 0 //不能将类型“number”分配给类型“never”
-d = 'hello' //不能将类型“string”分配给类型“never”
+/* d = 0 //不能将类型“number”分配给类型“never”
+d = 'hello' //不能将类型“string”分配给类型“never” */
 
 // 2、never一般是ts推断出来的
 let e: string
