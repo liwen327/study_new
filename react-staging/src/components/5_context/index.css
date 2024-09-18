@@ -1,0 +1,16 @@
+.parent {
+  width: 100%;
+  background-color: grey;
+  padding: 8px;
+}
+
+.children {
+  width: 100%;
+  background-color: skyblue;
+  padding: 8px;
+}
+.grand {
+  width: 100%;
+  background-color: yellowgreen;
+  padding: 8px;
+}

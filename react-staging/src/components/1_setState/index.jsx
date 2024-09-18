@@ -2,7 +2,7 @@
  * @Author: liwz
  * @Date: 2024-09-03 16:34:18
  * @LastEditors: liwz
- * @LastEditTime: 2024-09-03 16:54:49
+ * @LastEditTime: 2024-09-04 14:51:24
  * @FilePath: /study_new/react-staging/src/components/1_setState/index.jsx
  * @Description:
  *
@@ -17,9 +17,14 @@ export default class demo extends Component {
 
   // 对象式的setState
   add = () => {
-    let { count } = this.state
+    // 1、第一种写法  对象式写法
+    /* let { count } = this.state
     this.setState({ count: count + 1 }, () => {
-      console.log('count:', this.state.count)
+      console.log('count:', this.state.count) //想要获取最新的count值，就需要在回调函数中获取，不然获取不到
+    }) */
+    // 第二种写法  函数式写法
+    this.setState((state, props) => {
+      return { count: state.count + 1 }
     })
   }
   render() {

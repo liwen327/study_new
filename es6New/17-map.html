@@ -1,69 +1,62 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-16 09:06:00
- * @LastEditTime: 2021-03-19 13:38:49
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-09-09 11:39:20
+ * @LastEditors: liwz
  * @Description: In User Settings Edit
- * @FilePath: /agla-fe-components-8.50/Users/liwenzhi/study/es6New/17-map.html
+ * @FilePath: /study_new/es6New/17-map.html
 -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>new map</title>
-</head>
-<body>
-  <script>
-    const m1 = new Map([
-      ['key1','val1']
-    ])
-    for(let key of m1.keys()){
-      key = 'newKey';
-      console.log(key);
-      console.log(m1.get('key1'));
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>new map</title>
+  </head>
+  <body>
+    <script>
+      const m1 = new Map([['key1', 'val1']])
+      for (let key of m1.keys()) {
+        key = 'newKey'
+        console.log(key)
+        console.log(m1.get('key1'))
+      }
 
+      const keyObj = { id: 1 }
+      const m = new Map([[keyObj, 'val1']])
+      // 修改了作为键的对象的属性，但对象在映射内部仍然引用相同的值
+      for (let key of m.keys()) {
+        key.id = 'newKey'
+        console.log(key)
+        console.log('m.get(keyObj):', m.get(keyObj))
+      }
+      console.log(keyObj)
 
-    const keyObj = {id:1};
-    const m =new Map([
-      [keyObj,'val1']
-    ]);
-    // 修改了作为键的对象的属性，但对象在映射内部仍然引用相同的值
-    for(let key of m.keys()){
-      key.id = 'newKey';
-      console.log(key);
-      console.log('m.get(keyObj):',m.get(keyObj));
-    }
-    console.log(keyObj);
+      // weakMap   :弱映射中的键只能是Object或者继承自Object的类型，尝试使用非对象设置键会抛出TypeError。值 的类型没有限制
+      const key1 = { id: 1 },
+        key2 = { id: 2 },
+        key3 = { id: 3 }
+      const wm2 = new WeakMap([
+        [key1, 'val1'],
+        ['badKey', 'val2'], // Uncaught TypeError: Invalid value used as weak map keys  这里key为字符串,抛出错误
+        [key3, 'val3']
+      ])
 
-    // weakMap   :弱映射中的键只能是Object或者继承自Object的类型，尝试使用非对象设置键会抛出TypeError。值 的类型没有限制
-    const key1 = {id:1},
-    key2 = {id:2},
-    key3 = {id:3};
-    const wm2 = new WeakMap([
-      [key1,'val1'],
-      ['badKey','val2'],   // Uncaught TypeError: Invalid value used as weak map keys  这里key为字符串,抛出错误
-      [key3,'val3']
-    ])
-
-
-    let obj = {
-      APPLY:'qingkuanTableData',
-      LOAN:'jiekuanTableData',
-      FACARD:'faTableData',
-      MAINTENANCE:'mainTeanceTableData',
-      CONTRACT:'conTractTableData',
-      PURCHASE:'purchaseTableData',
-      APPLY_ITEM:'shixiangTableData',
-      EXP:'expTableData'
-    }
-    let arr = [1,2,3,4,5,6,7,8]
-    arr.forEach(item=>{
-      obj.APPLY
-    })
-  </script>
-
-</body>
+      let obj = {
+        APPLY: 'qingkuanTableData',
+        LOAN: 'jiekuanTableData',
+        FACARD: 'faTableData',
+        MAINTENANCE: 'mainTeanceTableData',
+        CONTRACT: 'conTractTableData',
+        PURCHASE: 'purchaseTableData',
+        APPLY_ITEM: 'shixiangTableData',
+        EXP: 'expTableData'
+      }
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+      arr.forEach(item => {
+        obj.APPLY
+      })
+    </script>
+  </body>
 </html>
