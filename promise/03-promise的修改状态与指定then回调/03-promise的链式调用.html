@@ -1,0 +1,39 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-09-25 14:49:16
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-09-25 14:52:49
+ * @FilePath: /study_new/promise/03-promise的修改状态与指定then回调/03-promise的链式调用.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03-promise的链式调用</title>
+  </head>
+  <body>
+    <script>
+      let p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('ok')
+        }, 1000)
+      })
+      p.then(value => {
+        return new Promise((resolve, reject) => {
+          resolve('success')
+        })
+      })
+        .then(value => {
+          console.log(value) // success
+        })
+        .then(value => {
+          console.log(value) //undefined
+        })
+    </script>
+  </body>
+</html>

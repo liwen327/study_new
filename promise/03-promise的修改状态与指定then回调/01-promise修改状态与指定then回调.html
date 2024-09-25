@@ -1,0 +1,56 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-09-25 10:58:29
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-09-25 11:29:29
+ * @FilePath: /study_new/promise/03-promise的修改状态与指定then回调/01-promise修改状态与指定then回调.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01-promise修改状态与指定then回调</title>
+  </head>
+  <body>
+    <script>
+      /* let p = new Promise((resolve, reject) => {
+        // setTimeout(() => {
+        resolve('ok')
+        // }, 500)
+      })
+
+      setTimeout(() => {
+        p.then(
+          value => {
+            console.log('value: ', value)
+          },
+          reason => {
+            console.log('error: ', reason)
+          }
+        )
+      }, 2000) */
+
+      // 在执行器中使用定时器，读取文件等异步操作。
+      let p = new Promise((resolve, reject) => {
+        // 在执行器中使用定时器，则先指定回调，再修改状态
+        // setTimeout(() => {
+        resolve('ok')
+        // }, 500)
+      })
+
+      p.then(
+        value => {
+          console.log('value: ', value)
+        },
+        reason => {
+          console.log('error: ', reason)
+        }
+      )
+    </script>
+  </body>
+</html>

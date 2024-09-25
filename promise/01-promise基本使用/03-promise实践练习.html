@@ -1,0 +1,59 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-09-21 15:18:39
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-09-23 10:29:45
+ * @FilePath: /study_new/promise/01-promise基本使用/03-promise实践练习.html
+ * @Description:03-promise实践练习
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03-promise实践练习</title>
+  </head>
+  <body>
+    <div id="root">
+      <button id="btn">点击</button>
+    </div>
+    <script>
+      let btn = document.getElementById('btn')
+      btn.addEventListener('click', function () {
+        const p = new Promise((resolve, reject) => {
+          // 1、创建对象
+          const xhr = new XMLHttpRequest()
+          // 2、初始化
+          xhr.open('GET', 'https://api.apiopen.top/getJok11111')
+          // 3、发送请求
+          xhr.send()
+          // 4、处理响应结果
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                // 控制台输出响应体
+                // console.log('response: ', xhr.response)
+                resolve(xhr.response)
+              } else {
+                // console.log(xhr.status)
+                reject(xhr.status)
+              }
+            }
+          }
+        })
+        // 调用then方法
+        p.then(
+          value => {
+            console.log(value)
+          },
+          reason => {
+            console.log(reason)
+          }
+        )
+      })
+    </script>
+  </body>
+</html>

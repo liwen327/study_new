@@ -1,0 +1,53 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-09-23 10:31:34
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-09-23 11:05:54
+ * @FilePath: /study_new/promise/01-promise基本使用/06-promise封装Ajax.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>promise封装ajax</title>
+  </head>
+  <body>
+    <!--  -->
+    <script>
+      /*
+        封装ajax的get请求
+    */
+
+      function myAjaxGet(url) {
+        return new Promise((resolve, reject) => {
+          let xhr = new XMLHttpRequest()
+          xhr.open('GEt', url)
+          xhr.send()
+          xhr.onreadystatechange = function () {
+            // xhr.readyState等于4才会返回状态码
+            if (xhr.readyState === 4) {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                resolve(xhr.response)
+              } else {
+                reject(xhr.status)
+              }
+            }
+          }
+        })
+      }
+      myAjaxGet('https://api.apiopen.top/getJoke').then(
+        value => {
+          console.log('data: ', value)
+        },
+        err => {
+          console.log('err: ', err)
+        }
+      )
+    </script>
+  </body>
+</html>

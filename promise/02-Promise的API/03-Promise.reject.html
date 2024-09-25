@@ -1,0 +1,31 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-09-23 17:01:17
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-09-23 17:02:53
+ * @FilePath: /study_new/promise/02-Promise的API/03-Promise.reject.html
+ * @Description:
+
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let p = Promise.reject(111) // 无论传入什么都是失败的
+      let p = Promise.reject(
+        new Promise((resolve, reject) => {
+          resolve('ok') // 依然是失败的
+        })
+      )
+      console.log(p)
+    </script>
+  </body>
+</html>

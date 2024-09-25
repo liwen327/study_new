@@ -1,0 +1,43 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-09-25 14:49:16
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-09-25 15:47:24
+ * @FilePath: /study_new/promise/03-promise的修改状态与指定then回调/04-promise.catch的异常穿透.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04-promise.catch的异常穿透</title>
+  </head>
+  <body>
+    <script>
+      let p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('ok')
+          // reject('error')
+        }, 1000)
+      })
+      p.then(value => {
+        // console.log(11)
+        throw 'error' //
+      })
+        .then(value => {
+          console.log(22) // success
+          throw '出错了' //这个不执行了，因为前面已经报错了
+        })
+        .then(value => {
+          console.log(33) //undefined
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    </script>
+  </body>
+</html>

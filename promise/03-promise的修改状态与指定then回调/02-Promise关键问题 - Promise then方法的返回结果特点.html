@@ -1,0 +1,54 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-09-25 10:58:29
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-09-25 14:29:25
+ * @FilePath: /study_new/promise/03-promise的修改状态与指定then回调/02-Promise关键问题 - Promise then方法的返回结果特点.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02-Promise关键问题 - Promise then方法的返回结果特点</title>
+  </head>
+  <body>
+    <script>
+      let p = new Promise((resolve, reject) => {
+        resolve('ok')
+      })
+
+      let result = p.then(
+        value => {
+          // then方法的返回结果由then所指定的回调函数所决定
+          // 1、如果抛出错误，则result为rejected,值为抛出的错误
+          // throw '出错了'
+          // 2、如果返回非promise的对象，则结果为fulfilled,PromiseResult为521
+          // return 521
+          // 3、如果返回Promise对象，则结果由返回的promise对象的值所决定
+          return new Promise((resolve, reject) => {
+            // resolve('成功了')
+            reject('error')
+          })
+        },
+        reason => {
+          console.log(reason)
+        }
+      )
+      console.log(result)
+      /* [[Prototype]]
+        :
+        Promise
+        [[PromiseState]]
+        :
+        "rejected"
+        [[PromiseResult]]
+        :
+        "出错了" */
+    </script>
+  </body>
+</html>

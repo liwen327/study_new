@@ -1,0 +1,33 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-09-23 17:08:27
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-09-23 17:14:58
+ * @FilePath: /study_new/promise/02-Promise的API/04-Promise.all.html
+ * @Description:
+
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise.all</title>
+  </head>
+  <body>
+    <script>
+      let p1 = new Promise((resolve, reject) => {
+        resolve('ok')
+      })
+      // let p2 = Promise.resolve('哈哈')
+      let p2 = Promise.reject('error')
+      let p3 = Promise.resolve('oh,yeah!')
+
+      let result = Promise.all([p1, p2, p3])
+      console.log(result)
+    </script>
+  </body>
+</html>
