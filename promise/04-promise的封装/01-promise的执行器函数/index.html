@@ -1,0 +1,30 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-09-25 16:54:30
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-09-25 17:34:35
+ * @FilePath: /study_new/promise/04-promise的封装/01-promise的执行器函数/index.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01-promise的执行器函数</title>
+    <script src="./promise.js"></script>
+  </head>
+  <body>
+    <script>
+      let p = new Promise((resolve, reject) => {
+        // resolve('ok')
+        // reject('error')
+        throw 'error'
+      })
+      console.log(p)
+    </script>
+  </body>
+</html>
