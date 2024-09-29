@@ -2,7 +2,7 @@
  * @Author: liwz
  * @Date: 2024-09-25 17:34:16
  * @LastEditors: liwz
- * @LastEditTime: 2024-09-25 17:46:29
+ * @LastEditTime: 2024-09-29 11:00:19
  * @FilePath: /study_new/promise/04-promise的封装/04-promise的then方法执行回调/promise.js
  * @Description:
  *
@@ -41,8 +41,9 @@ function Promise(executor) {
   }
 }
 
-// 04  写then方法
+// 04  写then方法中执行回调
 Promise.prototype.then = function (onResolved, onRejected) {
+  // 调用回调函数
   // 当状态改变后需要调用p.then中的回调函数，成功时调用value=>console.log(value)的回调函数
   // onResolved的调用是用条件的，成功时才调用
   if (this.promiseState === 'fulfilled') {

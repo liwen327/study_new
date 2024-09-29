@@ -2,8 +2,8 @@
  * @Author: liwz
  * @Date: 2024-09-25 17:34:16
  * @LastEditors: liwz
- * @LastEditTime: 2024-09-27 16:26:02
- * @FilePath: /study_new/promise/04-promise的封装/05-promise的执行器函数中是异步任务时/promise.js
+ * @LastEditTime: 2024-09-29 11:14:04
+ * @FilePath: /study_new/promise/04-promise的封装/05-promise的异步任务回调的执行/promise.js
  * @Description:
  *
  * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
@@ -15,7 +15,7 @@ function Promise(executor) {
   let self = this
 
   // 保存回调函数
-  this.callback = {}
+  this.callback = {} //新增的代码
   // resolve函数
   function resolve(data) {
     // return data    //这里写错了不应该是return 出data的值，应该是改变promiseState的状态
@@ -24,6 +24,7 @@ function Promise(executor) {
     // 2、设置结果对象值（promiseResult）
     self.promiseResult = data
     // 如果callback中有onResolved，则状态修改为成功，则调用回调函数对象中的onResolved函数
+    // 新增的代码
     if (self.callback.onResolved) {
       self.callback.onResolved(data)
     }
@@ -66,9 +67,10 @@ Promise.prototype.then = function (onResolved, onRejected) {
   }
 
   // 在调用new Promise中使用异步时，此时状态还没改变，不能在then中调用，得是改变状态时在Promise()构造函数中的resolve或reject方法中调用
+  // 新增的代码
   if (this.promiseState === 'pending') {
     // 这里this 指向Promise的实例对象，所以使用this能获取到值
-    // 保存回调函数
+    // 保存回调函数！！！！！
     this.callback = {
       onResolved,
       onRejected

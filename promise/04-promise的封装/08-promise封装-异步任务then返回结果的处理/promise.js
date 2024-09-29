@@ -2,8 +2,8 @@
  * @Author: liwz
  * @Date: 2024-09-25 17:34:16
  * @LastEditors: liwz
- * @LastEditTime: 2024-09-27 17:28:23
- * @FilePath: /study_new/promise/04-promise的封装/07-promise封装-同步任务then返回结果/promise.js
+ * @LastEditTime: 2024-09-29 14:16:44
+ * @FilePath: /study_new/promise/04-promise的封装/08-promise封装-异步任务then返回结果的处理/promise.js
  * @Description:
  *
  * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
@@ -33,7 +33,7 @@ function Promise(executor) {
     // return reason
     // 1、修改对象的状态（promiseState）
     self.promiseState = 'rejected'
-    // 2、设置结果对象值（promiseResult）
+    // 2、设置对象结果值（promiseResult）
     self.promiseResult = reason
     // 如果callback中有onRejected，则状态修改为成功，则调用回调函数对象中的onRejected函数
     self.callbacks.forEach(item => {
@@ -42,7 +42,7 @@ function Promise(executor) {
   }
   // 修理new Promise抛出的异常，如果抛出异常，需要更改状态为失败，值为抛出的异常的值
   try {
-    // 执行器函数executor   需要立即执行
+    // 执行器函数executor   需要立即执行(同步调用【执行器函数】)
     executor(resolve, reject)
   } catch (error) {
     /* self.promiseState = 'rejected'
@@ -54,30 +54,52 @@ function Promise(executor) {
 
 // 04  写then方法
 Promise.prototype.then = function (onResolved, onRejected) {
+  let self = this
   // 当状态改变后需要调用p.then中的回调函数，成功时调用value=>console.log(value)的回调函数
   return new Promise((resolve, reject) => {
     // onResolved的调用是用条件的，成功时才调用
     if (this.promiseState === 'fulfilled') {
-      // 这里this 指向Promise的实例对象，所以使用this能获取到值
-      let result = onResolved(this.promiseResult)
-      if (result instanceof Promise) {
-        // 如果是Promise类型的对象
-        result.then(
-          v => {
-            resolve(v)
-          },
-          r => {
-            reject(r)
-          }
-        )
-      } else {
-        // 结果对象状态为【成功】
-        resolve(result)
+      try {
+        let result = onResolved(this.promiseResult)
+        if (result instanceof Promise) {
+          // 如果是Promise类型的对象
+          result.then(
+            v => {
+              resolve(v)
+            },
+            r => {
+              reject(r)
+            }
+          )
+        } else {
+          // 结果对象状态为【成功】
+          resolve(result)
+        }
+      } catch (e) {
+        reject(e)
       }
+      // 这里this 指向Promise的实例对象，所以使用this能获取到值
     }
     if (this.promiseState === 'rejected') {
       // 这里this 指向Promise的实例对象，所以使用this能获取到值
-      onResolved(this.promiseResult)
+      // onRejected(this.promiseResult)
+      try {
+        let result = onRejected(self.promiseResult)
+        if (result instanceof Promise) {
+          result.then(
+            v => {
+              resolve(v)
+            },
+            r => {
+              reject(r)
+            }
+          )
+        } else {
+          resolve(result)
+        }
+      } catch (e) {
+        reject(e)
+      }
     }
 
     // 在调用new Promise中使用异步时，此时状态还没改变，不能在then中调用，得是改变状态时在Promise()构造函数中的resolve或reject方法中调用
@@ -85,8 +107,44 @@ Promise.prototype.then = function (onResolved, onRejected) {
       // 这里this 指向Promise的实例对象，所以使用this能获取到值
       // 保存回调函数
       this.callbacks.push({
-        onResolved,
-        onRejected
+        onResolved: function () {
+          try {
+            let result = onResolved(self.promiseResult)
+            if (result instanceof Promise) {
+              result.then(
+                v => {
+                  resolve(v)
+                },
+                r => {
+                  reject(r)
+                }
+              )
+            } else {
+              resolve(result)
+            }
+          } catch (e) {
+            reject(e)
+          }
+        },
+        onRejected: function () {
+          try {
+            let result = onRejected(self.promiseResult)
+            if (result instanceof Promise) {
+              result.then(
+                v => {
+                  resolve(v)
+                },
+                r => {
+                  reject(r)
+                }
+              )
+            } else {
+              resolve(result)
+            }
+          } catch (e) {
+            reject(e)
+          }
+        }
       })
     }
   })

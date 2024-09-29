@@ -1,0 +1,29 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-09-25 16:54:30
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-09-29 10:39:08
+ * @FilePath: /study_new/promise/04-promise的封装/03-01-promise的状态只能改变一次/index.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03-01-promise的状态只能改变一次</title>
+    <script src="./promise.js"></script>
+  </head>
+  <body>
+    <script>
+      let p = new Promise((resolve, reject) => {
+        resolve('ok')
+        reject('error')
+      })
+      console.log(p) // Promise {promiseState: 'fulfilled', promiseResult: 'ok'}  只执行了一次，执行器函数中的reject('error')没有执行
+    </script>
+  </body>
+</html>
