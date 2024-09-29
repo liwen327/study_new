@@ -1,0 +1,39 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-09-25 16:54:30
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-09-29 17:49:21
+ * @FilePath: /study_new/promise/04-promise的封装/14-promise封装-Promise.race封装/index.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14-promise封装-Promise.race封装</title>
+    <script src="./promise.js"></script>
+  </head>
+  <body>
+    <script>
+      let p1 = new Promise((resolve, reject) => {
+        // setTimeout(() => {
+        resolve('ok')
+        // }, 1000)
+      })
+      let p2 = new Promise((resolve, reject) => {
+        resolve('success')
+        // reject('error')
+      })
+      let p3 = new Promise((resolve, reject) => {
+        resolve('成功了')
+      })
+
+      let result = Promise.race([p1, p2, p3]) //Promise.race的规则为谁先改变状态，则promise的返回值即为谁
+      console.log(result)
+    </script>
+  </body>
+</html>
