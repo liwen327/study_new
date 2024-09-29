@@ -1,0 +1,49 @@
+<!--
+ * @Author: liwz liwz@yonyou.com
+ * @Date: 2024-09-30 06:56:32
+ * @LastEditors: liwz liwz@yonyou.com
+ * @LastEditTime: 2024-09-30 07:16:21
+ * @FilePath: /study_new/promise/05-async函数/async.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>await</title>
+</head>
+<body>
+  <script>
+    // 你会发现，main函数和Promise.then函数中的回调函数一样
+    async function main(){
+      let p = new Promise((resolve,reject)=>{
+        // resolve('ok')
+        throw "error"
+
+
+      })
+
+      // 1、右侧为promise的情况
+      // let res = await p
+      // console.log(res)
+
+      // 2、右侧为其它类型
+      // let res = await 20;
+      // console.log(res)
+
+      // 3、右侧抛出异常
+      try{
+        let res = await p
+      }catch(e){
+        console.log(e)
+      }
+
+    }
+
+    main()
+
+  </script>
+</body>
+</html>
