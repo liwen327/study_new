@@ -1,0 +1,68 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-09-30 11:01:35
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-10-08 13:07:56
+ * @FilePath: /study_new/leetCode/01-两个数之和且返回下标/01-两个数之和且返回下标.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>两个数之和，且返回下标</title>
+  </head>
+  <body>
+    <script>
+      /* var twoSum = function (nums, target) {
+        let arr = []
+        for (let i = 0; i < nums.length; i++) {
+          if (target === nums[i] + nums[i + 1]) {
+            arr = [i, i + 1]
+          }
+        }
+        return arr
+      } */
+      var twoSum = function (nums, target) {
+        if (nums.length < 2) return -1
+        for (let i = 0; i < nums.length; i++) {
+          if (target === nums[i] + nums[i + 1]) {
+            return [i, i + 1]
+          }
+        }
+        return -1
+      }
+
+      let arr = [2, 7, 11, 15],
+        target = 9
+      twoSum(arr, target)
+      console.log(twoSum(arr, target))
+      console.log(twoSum([3, 2, 4], 6))
+      console.log(twoSum([3, 3], 6))
+      console.log(twoSum([3], 6))
+
+      /* var twoSum = function (nums, target) {
+        let arr = []
+        if (nums.length < 2) return -1
+        for (let i = 0; i < nums.length; i++) {
+          for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] == target) {
+              return [i, j]
+            }
+          }
+        }
+      }
+      let arr = [2, 7, 11, 15],
+        target = 9
+      twoSum(arr, target)
+      console.log(twoSum(arr, target))
+      console.log(twoSum([3, 2, 4], 6))
+      console.log(twoSum([3, 3], 6))
+      console.log(twoSum([3], 6)) */
+    </script>
+  </body>
+</html>

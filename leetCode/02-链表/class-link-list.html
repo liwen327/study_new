@@ -1,0 +1,84 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-10-09 10:05:02
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-10-09 10:10:02
+ * @FilePath: /study_new/leetCode/02-链表/class-link-list.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        ListNode
+
+        LinkList
+
+        head   头节点
+
+        size   大小
+
+        今天主要学习：如何将一个数组转换成一个链表
+
+        1、数组转换成链表
+        2、push
+        3、remove
+        4、replace
+        5、indexOf
+        6、getNode
+
+        */
+
+      // 定义节点类
+      class ListNode {
+        constructor(val) {
+          this.val = val
+          this.next = null
+        }
+      }
+
+      // 定义链表类
+      class LinkList {
+        constructor(arr) {
+          if (arr === undefined) {
+            this.head = null
+            this.size = 0
+          } else if (Array.isArray(arr)) {
+            this.head = null
+            this.size = arr.length
+            this.generateList(arr)
+          }
+        }
+
+        generateList(arr) {
+          //1、 首先，初始化一个新节点
+          let cur = new ListNode(arr[0])
+          // 2、把这个新节点给到头部节点
+          this.head = cur
+          for (let i = 1; i < arr.length; i++) {
+            // 3、下次循环进来时，把下一个节点给到当前节点
+            cur.next = new ListNode(arr[i])
+            // 4、node的指针指到下一个节点
+            cur = cur.next
+          }
+        }
+      }
+
+      // 1 => 2 => 3 => 4
+      let arr = [1, 2, 3, 4]
+      let l1 = new LinkList(arr)
+      console.dir(l1, {
+        depth: 10
+      })
+    </script>
+  </body>
+</html>

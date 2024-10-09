@@ -1,0 +1,55 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-10-08 17:34:28
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-10-08 17:59:24
+ * @FilePath: /study_new/leetCode/01-两个数之和且返回下标/02-链表.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>链表</title>
+  </head>
+  <body>
+    <script>
+      var ListNode = function (x) {
+        this.val = x
+        this.next = null
+      }
+
+      // 输入一个数组，转换为一条单链表
+      var createLinkedList = function (arr) {
+        if (arr == null || arr.length == 0) {
+          return null
+        }
+        var head = new ListNode(arr[0])
+        var cur = head
+        for (var i = 1; i < arr.length; i++) {
+          cur.next = new ListNode(arr[i])
+          cur = cur.next
+        }
+        return head
+      }
+      // 创建一条单链表
+      var head = createLinkedList([1, 2, 3, 4, 5])
+
+      // 在单链表尾部插入一个新节点  6
+      var p = head
+      // 先走到链表的最后一个节点
+      while (p.next !== null) {
+        p = p.next
+      }
+
+      // 现在p就是链表的最后一个节点
+      // 在p后面插入新节点
+      p.next = new ListNode(6)
+      console.log(p, head)
+    </script>
+  </body>
+</html>
