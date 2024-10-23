@@ -1,0 +1,42 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-10-11 06:57:21
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-10-11 07:03:13
+ * @FilePath: /study_new/es6New/es6/18-展开运算符.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>展开运算符</title>
+  </head>
+  <body>
+    <script>
+      let arr1 = [1, 3, 5, 7, 9]
+      let arr2 = [2, 4, 6, 8, 10]
+      // 1.使用展开运算符合并两个数组
+      let arr3 = [...arr1, ...arr2] //
+      console.log(...arr1)
+      console.log(arr3)
+
+      // 2.使用展开运算符传递未知的函数参数
+      function add(...numbers) {
+        return numbers.reduce((preValue, nextValue) => {
+          return preValue + nextValue
+        })
+      }
+      console.log(add(1, 2, 3))
+      // 3.使用展开运算符以字面量形式复制一个新对象
+      let person = { name: 'Mike', age: 27 }
+      let person1 = { ...person }
+      person.name = 'John'
+      console.log(person1)
+    </script>
+  </body>
+</html>
