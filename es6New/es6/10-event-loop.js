@@ -38,8 +38,6 @@ setTimeout(function () {
 // 2 promise1
 // 4 promise2
 
-
-
 // node端与浏览器端的事件循环区别：
 // 第一次执行结果：1 2 3 4 5 6 7 8
 //第二次或多执行几次结果每次都不相同：因为setImmediate存在精度问题，它是node特有的。浏览器端没有setImmediate
@@ -102,7 +100,7 @@ setImmediate(function () {
 }) */
 
 //setImmediate和setTimeout fs.readdir
-const fs = require('fs');
+/* const fs = require('fs');
 
 setImmediate(function () {
   console.log('1 setImmediate');
@@ -118,18 +116,43 @@ setTimeout(function () {
 
 Promise.resolve().then(function () {
   console.log('4 promise');
-})
+}) */
 // 执行结果：
 // 4 promise
 // 3 setTimeout
 // 2 fs.readdir
 // 1 setImmediate
 
+// 事件循环，宏任务和微任务
+console.log(1)
+setTimeout(function () {
+  console.log(2)
+  let promise = new Promise(function (resolve, reject) {
+    console.log(3)
+    resolve()
+  }).then(function () {
+    console.log(4)
+  })
+}, 1000)
+setTimeout(function () {
+  console.log(5)
+  let promise = new Promise(function (resolve, reject) {
+    console.log(6)
+    resolve()
+  }).then(function () {
+    console.log(7)
+  })
+}, 0)
+let promise = new Promise(function (resolve, reject) {
+  console.log(8)
+  resolve()
+})
+  .then(function () {
+    console.log(9)
+  })
+  .then(function () {
+    console.log(10)
+  })
+console.log(11)
 
-
-
-
-
-
-
-
+// 输出结果：1 8  11 9  10  5  6  7  2  3  4
