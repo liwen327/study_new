@@ -1,0 +1,154 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-11-26 10:38:28
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-11-26 13:46:09
+ * @FilePath: /study_new/interview/meituan/01-水平垂直居中的实现.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>水平垂直居中</title>
+    <style>
+      /* 1、flex布局，给父元素设置display:flex;justify-content:center;align-items:center */
+      .box1 {
+        background-color: antiquewhite;
+
+        width: 500px;
+        height: 500px;
+        display: flex;
+        justify-content: center; /*关键代码 */
+        align-items: center; /*关键代码*/
+      }
+      .align {
+        background-color: grey;
+      }
+      /* 2、grid 方式 ：  */
+      .box2 {
+        background-color: antiquewhite;
+
+        width: 500px;
+        height: 500px;
+        display: grid; /*关键代码*/
+        place-items: center; /*关键代码*/
+      }
+      .align2 {
+        background-color: grey;
+      }
+      /* 3、绝对定位配合translate位移 : 先将元素定位到父元素上下左右50%的位置 ，也就是中心点的位置，但子元素本身不在中心点，需要位移，位移自身的一半即可*/
+      .box3 {
+        background-color: antiquewhite;
+
+        width: 500px;
+        height: 500px;
+        /*关键代码*/
+        position: relative;
+      }
+      .align3 {
+        background-color: grey;
+
+        /*以下都是关键代码*/
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      /* 4、绝对定位配合自动margin：此方法需要确定子元素宽高，不然不会将父元素铺满，确定宽高后，将四个方向都设置为0，margin设置为auto即可实现，虽然代码较多，但也比较容易理解。 */
+      .box4 {
+        background-color: antiquewhite;
+
+        width: 500px;
+        height: 500px;
+        /*关键代码*/
+        position: relative;
+      }
+      .align4 {
+        background-color: grey;
+
+        /*以下都是关键代码*/
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+
+      /* 5、通过绝对定位的方式 absolute + 负margin */
+      .box5 {
+        background-color: antiquewhite;
+
+        width: 500px;
+        height: 500px;
+        /*关键代码*/
+        position: relative;
+      }
+      .align5 {
+        width: 200px;
+        height: 200px;
+        background-color: grey;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -100px 0 0 -100px;
+      }
+
+      /* 6、通过绝对定位的方式 absolute 和方法5原理相似，只不过在定位到父元素中心时，减去自身宽高的一半实现水平垂直居中 */
+      .box6 {
+        background-color: antiquewhite;
+
+        width: 500px;
+        height: 500px;
+        /*关键代码*/
+        position: relative;
+      }
+      .align6 {
+        width: 200px;
+        height: 200px;
+        background-color: grey;
+        position: absolute;
+        top: calc(50% - 100px);
+        left: calc(50% - 100px);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 第1种方式 -->
+    <!-- <div class="box1">
+      <div class="align1">垂直居中</div>
+    </div> -->
+
+    <!-- 第2种方式 -->
+    <!-- <div class="box2">
+      <div class="align2">垂直居中</div>
+    </div> -->
+
+    <!-- 第3种方式 -->
+    <!-- <div class="box3">
+      <div class="align3">垂直居中</div>
+    </div> -->
+
+    <!-- 第4种方式 -->
+    <!-- <div class="box4">
+      <div class="align4">垂直居中</div>
+    </div> -->
+
+    <!-- 第5种方式 -->
+    <!-- <div class="box5">
+      <div class="align5">垂直居中</div>
+    </div> -->
+
+    <!-- 第6种方式 -->
+    <div class="box6">
+      <div class="align6">垂直居中</div>
+    </div>
+  </body>
+</html>

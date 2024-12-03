@@ -1,0 +1,58 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-11-26 15:35:28
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-11-26 16:38:08
+ * @FilePath: /study_new/interview/meituan/03-call/apply和bind函数.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>call apply bind</title>
+  </head>
+  <body>
+    <script>
+      // call的用法：
+      /*  let arr = [1, 2, 3, 4, 5]
+      function fn(...b) {
+        let a = b.reduce((sum, item) => (sum += item), 0)
+        console.log(this, b, a)
+      }
+      fn(...arr) // window  b:[1,2,3,4,5]   15
+      let obj = {
+        name: '张三'
+      }
+      fn.call(obj, 1, 2) // obj   b:[1,2]  3 */
+
+      // apply的用法
+      /* let arr = [1, 2, 3, 4, 5]
+      function fn(...b) {
+        let a = b.reduce((sum, item) => (sum += item), 0)
+        console.log(this, b, a)
+      }
+      fn(...arr) //window  (5) [1, 2, 3, 4, 5] 15
+      let obj = {
+        name: '张三'
+      }
+      fn.apply(obj, [1, 2]) //  {name:'张三'}  (2)[1,2]   3 */
+
+      // bind的用法
+      let arr = [1, 2, 3, 4, 5]
+      function fn(...b) {
+        let a = b.reduce((sum, item) => (sum += item), 0)
+        console.log(this, b, a)
+      }
+      fn(...arr) //window   (5) [1, 2, 3, 4, 5] 15
+      let obj = {
+        name: '张三'
+      }
+      fn.bind(obj, 1, 2)() //  {name:'张三'}  (2)[1,2]   3  必须再调用一下这个函数，不然控制台不打印
+    </script>
+  </body>
+</html>

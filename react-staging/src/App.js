@@ -2,7 +2,7 @@
  * @Author: liwz
  * @Date: 2024-08-22 10:05:14
  * @LastEditors: liwz
- * @LastEditTime: 2024-09-10 16:25:29
+ * @LastEditTime: 2024-11-27 14:05:19
  * @FilePath: /study_new/react-staging/src/App.js
  * @Description:
  *
@@ -18,6 +18,7 @@ import { Link, Route, Routes, NavLink, Switch, Redirect } from 'react-router-dom
 // import Count from './components/3_useEffect'
 // import Count from './components/4_Fragment'
 import Demo from './components/6_PureComponent'
+import Demo from './components/7_reactEvent'
 
 export default class App extends Component {
   render() {

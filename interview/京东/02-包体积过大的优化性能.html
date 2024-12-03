@@ -1,0 +1,33 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-03 10:01:41
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-03 10:07:31
+ * @FilePath: /study_new/interview/京东/02-包体积过大的优化性能.html
+ * @Description:,
+
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>包体积过大的优化问题</title>
+  </head>
+  <body>
+    <script>
+      // webpack.config.js
+      module.exports = {
+        entry: './src/index.js',
+        output: {
+          fileName: '[name].[content.hash].js',
+          chunkFileName: '[name].[content.hash].js',
+          path: path.resolve(__dirname, 'dist')
+        }
+      }
+    </script>
+  </body>
+</html>
