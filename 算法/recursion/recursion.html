@@ -1,0 +1,31 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-10 20:41:40
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-10 20:42:02
+ * @FilePath: /study_new/算法/recursion/recursion.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>递归调用，深度优先</title>
+  </head>
+  <body>
+    <script>
+      function recursion(num) {
+        if (num < 5) {
+          recursion(num + 1)
+        }
+        console.log(num)
+        return
+      }
+      recursion(1)
+    </script>
+  </body>
+</html>

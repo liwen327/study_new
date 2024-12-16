@@ -1,0 +1,72 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-14 09:11:41
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-14 10:03:39
+ * @FilePath: /study_new/interview/央企/01.每隔1秒打印1，2，3，4.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* setInterval(function () {
+        // for (let i = 0; i < 100; i++) {
+        console.log('i:', 1)
+        // }
+      }, 1000) */
+      // 1、利用闭包和自执行函数
+      /* for (var i = 1; i < 5; i++) {
+        ;(function (i) {
+          setTimeout(() => console.log(i), 1000 * i)
+        })(i)
+      } */
+      // 2、利用let的块作用域和自执行函数
+      /* for (let i = 1; i < 5; i++) {
+        ;(function () {
+          setTimeout(() => console.log(i), 1000 * i)
+        })()
+      } */
+
+      // 3、传址传递
+      /* var out = i => {
+        setTimeout(() => console.log(i), 1000 * i)
+      }
+
+      for (var i = 1; i < 5; i++) {
+        out(i)
+      } */
+      // 4、Promise.all()方法
+      /* let arr = []
+      let output = i =>
+        new Promise(res => {
+          setTimeout(() => {
+            console.log(i)
+            res()
+          }, 1000 * i)
+        })
+      for (var i = 0; i < 5; i++) {
+        arr.push(output(i))
+      }
+      console.log('arr: ', arr)
+      Promise.all(arr).then(() => console.log(5)) */
+
+      // 5、async  await方法
+      let sleep = () => new Promise(res => setTimeout(res, 1000))
+      ;(async function () {
+        for (let i = 0; i < 5; i++) {
+          await sleep()
+          console.log(i)
+        }
+      })()
+    </script>
+  </body>
+</html>

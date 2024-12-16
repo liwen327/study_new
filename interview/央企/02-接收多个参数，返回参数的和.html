@@ -1,0 +1,30 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-14 10:06:32
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-14 10:11:02
+ * @FilePath: /study_new/interview/央企/02-接收多个参数，返回参数的和.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let add = function (...arg) {
+        let sum = arg.reduce((prev, next) => {
+          return prev + next
+        })
+        return sum
+      }
+      console.log(add(1, 2, 3))
+    </script>
+  </body>
+</html>
