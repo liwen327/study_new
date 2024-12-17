@@ -1,0 +1,50 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-17 10:36:06
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-17 11:33:34
+ * @FilePath: /study_new/interview/经典/01-编程式思想的理解.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 函数柯里化
+      function add(a, b) {
+        return a + b
+      }
+      function withLogging(fn) {
+        return function (...args) {
+          console.log('arguments: ', args)
+          const result = fn(...args)
+          console.log('result: ', result)
+          return result
+        }
+      }
+
+      const addWithLogging = withLogging(add)
+      addWithLogging(1, 2)
+
+      // 函数组合
+      const useName = () => 'heyi'
+      const useAge = () => 18
+      const usePerson = () => {
+        let name = useName()
+        let age = useAge()
+        return {
+          name,
+          age
+        }
+      }
+    </script>
+  </body>
+</html>
