@@ -1,0 +1,46 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-19 14:47:56
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-19 15:40:18
+ * @FilePath: /study_new/算法/分而治之/递归调用.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* function sum(arr) {
+        if (arr.length === 0) {
+          return 0
+        } else {
+          let num = 0
+          // for (let i = 0; i < arr.length; i++) {
+          //   num += arr[i]
+          // }
+          num = arr.reduce((prev, next) => {
+            return prev + next
+          })
+          return num
+        }
+      }
+      console.log(sum([1, 2, 3])) */
+      function sum(arr) {
+        if (arr.length == 0) {
+          return 0
+        } else {
+          return arr[0] + sum(arr[1:])
+        }
+      }
+      console.log(sum([1, 2, 3]))
+    </script>
+  </body>
+</html>

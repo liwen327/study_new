@@ -1,0 +1,38 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-19 16:57:58
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-19 17:05:27
+ * @FilePath: /study_new/算法/LeetCode/14.最长公共前缀.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let strArr1 = ['flower', 'flow', 'flight']
+      var longestCommonPrefix = function (arr) {
+        let str = ''
+        if (arr.length === 0) {
+          console.log(' ')
+        } else {
+          for (let i = 0; i < arr.length; i++) {
+            let str1 = arr[i]
+            if (arr[i].includes(str1)) {
+              console.log(11111)
+            }
+          }
+        }
+      }
+      longestCommonPrefix(strArr1)
+    </script>
+  </body>
+</html>

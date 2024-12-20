@@ -1,0 +1,75 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-20 14:19:45
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-20 14:55:39
+ * @FilePath: /study_new/interview/经典/02-高阶函数.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // forEach
+      /*  function forEach(array, fn) {
+        for (let i = 0; i < array.length; i++) {
+          fn(array[i])
+        }
+      }
+
+      let arr = [1, 2, 3, 5]
+      forEach(arr, function (item) {
+        console.log(item)
+      }) */
+
+      /* // filter函数
+      function filter(arr, fn) {
+        let result = []
+        for (let i = 0; i < arr.length; i++) {
+          if (fn(arr[i])) {
+            result.push(arr[i])
+          }
+        }
+        console.log(result)
+        return result
+      }
+      let arr = [1, 3, 4, 8]
+      filter(arr, function (item) {
+        return item % 2 === 0
+      }) */
+
+      // 函数作为返回值
+      function msgFn() {
+        let msg = 'hello msg'
+        return function () {
+          console.log(msg)
+        }
+      }
+      let fn = msgFn()
+      fn() // hello msg
+
+      // 高阶函数单例模式应用
+      var getSingle = function (fn) {
+        var ret
+        return function () {
+          return ret || (ret = fn.apply(this, arguments))
+        }
+      }
+
+      var getScript = getSingle(function () {
+        return document.createElement('script')
+      })
+      var s1 = getScript()
+      var s2 = getScript()
+      console.log(s1 === s2) //true   表明s1和s2是占用的同一块内存地址，完全一样
+    </script>
+  </body>
+</html>

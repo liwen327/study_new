@@ -1,0 +1,70 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-19 17:16:43
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-20 15:31:31
+ * @FilePath: /study_new/算法/LeetCode/简单/88.合并两个有序数组.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* var merge = function (nums1, m, nums2, n) {
+        if (m == 0) {
+          for (let i = 0; i < n; i++) {
+            let num = nums2[0]
+            if (num < nums2[i]) {
+              nums1.push(nums2[i])
+            } else {
+              nums1.push(nums2[i])
+            }
+          }
+        } else if (n == 0) {
+          nums1 = nums1
+        } else {
+        }
+        console.log('nums1: ', nums1)
+      }
+      // merge([5, 2, 3], 3, [], 0)
+      merge([0], 0, [5, 2, 3], 3) */
+
+      var merge = function (nums1, m, nums2, n) {
+        let i = m - 1,
+          j = n - 1 //nums1和nums2的最后一个元素
+        // 生成排序的结果（类似拉链的拉锁）
+        let p = nums1.length - 1
+        // 从后向前生成结果数组，类似合并两个有序链表的逻辑
+        while (i >= 0 && j >= 0) {
+          if (nums1[i] > nums2[j]) {
+            nums1[p] = nums1[i]
+            i--
+          } else {
+            nums1[p] = nums2[j]
+            j--
+          }
+          p--
+        }
+        // 可能其中一个数组的指针走到尽头了，而另一个还没走完
+        // 因为我们本身就是在往nums1中放元素，所以只需考虑nums2是否还剩元素
+        while (j >= 0) {
+          nums1[p] = nums2[j]
+          j--
+          p--
+        }
+        return nums1
+      }
+      console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
+      console.log(merge([1], 1, [], 0))
+      console.log(merge([0], 0, [1], 1))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-20 15:50:04
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-20 16:02:25
+ * @FilePath: /study_new/算法/LeetCode/简单/1.两数之和.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number[]} nums
+       * @param {number} target
+       * @return {number[]}
+       */
+      var twoSum = function (nums, target) {
+        if (nums.length < 2) return -1
+        for (let i = 0; i < nums.length; i++) {
+          for (let j = i + 1; j < nums.length; j++) {
+            if (target === nums[i] + nums[j]) {
+              return [i, j]
+            }
+          }
+        }
+        return -1
+      }
+
+      console.log(twoSum([2, 7, 11, 15], 9))
+      console.log(twoSum([3, 2, 4], 6))
+      console.log(twoSum([3, 3], 6))
+    </script>
+  </body>
+</html>

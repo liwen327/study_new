@@ -1,0 +1,38 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-20 16:42:01
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-20 16:42:17
+ * @FilePath: /study_new/算法/LeetCode/简单/9.回文数.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let isPalindrome = function (x) {
+        if (x < 0) {
+          return false
+        }
+        let y = 0
+        let temp = x
+        while (temp > 0) {
+          let last_num = temp % 10
+          temp = Math.floor(temp / 10)
+
+          y = y * 10 + last_num
+        }
+        return y === x
+      }
+      console.log(isPalindrome(121))
+    </script>
+  </body>
+</html>

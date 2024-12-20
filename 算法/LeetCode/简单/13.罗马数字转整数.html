@@ -1,0 +1,48 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-20 16:42:33
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-20 16:42:58
+ * @FilePath: /study_new/算法/LeetCode/简单/13.罗马数字转整数.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {string} s
+       * @return {number}
+       */
+      var romanToInt = function (s) {
+        let symbolVal = new Map()
+        symbolVal.set('I', 1)
+        symbolVal.set('V', 5)
+        symbolVal.set('X', 10)
+        symbolVal.set('L', 50)
+        symbolVal.set('C', 100)
+        symbolVal.set('D', 500)
+        symbolVal.set('M', 1000)
+        let num = 0
+        const n = s.length
+        for (let i = 0; i < n; i++) {
+          const value = symbolVal.get(s[i])
+          if (i < n - 1 && value < symbolVal.get(s[i + 1])) {
+            num -= value
+          } else {
+            num += value
+          }
+        }
+        return num
+      }
+    </script>
+  </body>
+</html>
