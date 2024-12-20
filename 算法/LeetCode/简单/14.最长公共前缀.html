@@ -2,8 +2,8 @@
  * @Author: liwz
  * @Date: 2024-12-19 16:57:58
  * @LastEditors: liwz
- * @LastEditTime: 2024-12-19 17:05:27
- * @FilePath: /study_new/算法/LeetCode/14.最长公共前缀.html
+ * @LastEditTime: 2024-12-20 17:57:16
+ * @FilePath: /study_new/算法/LeetCode/简单/14.最长公共前缀.html
  * @Description:
  *
  * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
@@ -18,7 +18,7 @@
   </head>
   <body>
     <script>
-      let strArr1 = ['flower', 'flow', 'flight']
+      /* let strArr1 = ['flower', 'flow', 'flight']
       var longestCommonPrefix = function (arr) {
         let str = ''
         if (arr.length === 0) {
@@ -32,7 +32,35 @@
           }
         }
       }
-      longestCommonPrefix(strArr1)
+      longestCommonPrefix(strArr1) */
+
+      var longestCommonPrefix = function (arr) {
+        let str = ''
+        if (arr.length === 0) {
+          console.log(' ')
+        } else {
+          // 如果只有一个元素，则返回这个元素
+          if (arr.length === 1) return arr[0]
+          // 设置指针p
+          let p = 0
+          // 每轮指针加一，如果指针超过arr[0].length,则arr[0]为公共字符
+          while (p <= arr[0].length) {
+            //获取0到指针的字符
+            let s = arr[0].substring(0, p)
+            //  循环arr，对比arr[0]和arr[i]的前p个字符，如果有不同的，就证明第p个是不同的。返回p-1个字符
+            for (let i = 1; i < arr.length; i++) {
+              if (arr[i].substring(0, p) !== s) {
+                return arr[0].substring(0, p - 1)
+              }
+            }
+            p++
+          }
+          return arr[0]
+        }
+      }
+
+      let strArr1 = ['flower', 'flow', 'floght']
+      console.log(longestCommonPrefix(strArr1))
     </script>
   </body>
 </html>

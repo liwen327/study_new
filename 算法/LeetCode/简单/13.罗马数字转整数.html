@@ -2,7 +2,7 @@
  * @Author: liwz
  * @Date: 2024-12-20 16:42:33
  * @LastEditors: liwz
- * @LastEditTime: 2024-12-20 16:42:58
+ * @LastEditTime: 2024-12-20 17:12:03
  * @FilePath: /study_new/算法/LeetCode/简单/13.罗马数字转整数.html
  * @Description:
  *
@@ -35,6 +35,7 @@
         const n = s.length
         for (let i = 0; i < n; i++) {
           const value = symbolVal.get(s[i])
+          // 循环罗马数字，如果前一项比后一项小，则把前一项减1赋值给num,进入下次循环后，拿这个数减去num，则等于转化成的正整数
           if (i < n - 1 && value < symbolVal.get(s[i + 1])) {
             num -= value
           } else {
@@ -43,6 +44,10 @@
         }
         return num
       }
+      console.log(romanToInt('III'))
+      console.log(romanToInt('IV'))
+      console.log(romanToInt('IX'))
+      console.log(romanToInt('LVIII'))
     </script>
   </body>
 </html>
