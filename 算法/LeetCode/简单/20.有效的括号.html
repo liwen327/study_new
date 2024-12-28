@@ -1,0 +1,52 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-21 14:31:07
+ * @LastEditors: liwz
+ * @LastEditTime: 2024-12-21 15:21:04
+ * @FilePath: /study_new/算法/LeetCode/简单/20.有效的括号.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {string} s
+       * @return {boolean}
+       */
+      var isValid = function (str) {
+        let left = []
+        for (let c of str) {
+          if (c === '(' || c === '[' || c === '{') {
+            left.push(c)
+          } else {
+            // 字符c是右括号
+            if (left.length !== 0 && leftOf(c) === left[left.length - 1]) {
+              left.pop()
+            } else {
+              //和最近的左括号不匹配
+              return false
+            }
+          }
+        }
+        return left.length === 0
+      }
+
+      var leftOf = function (c) {
+        if (c === '}') return '{'
+        if (c === ')') return '('
+        return '['
+      }
+      console.log(isValid('()'))
+      console.log(isValid('([)'))
+    </script>
+  </body>
+</html>

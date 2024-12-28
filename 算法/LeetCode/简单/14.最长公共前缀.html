@@ -2,7 +2,7 @@
  * @Author: liwz
  * @Date: 2024-12-19 16:57:58
  * @LastEditors: liwz
- * @LastEditTime: 2024-12-20 17:57:16
+ * @LastEditTime: 2024-12-21 10:17:39
  * @FilePath: /study_new/算法/LeetCode/简单/14.最长公共前缀.html
  * @Description:
  *
@@ -34,7 +34,7 @@
       }
       longestCommonPrefix(strArr1) */
 
-      var longestCommonPrefix = function (arr) {
+      /* var longestCommonPrefix = function (arr) {
         let str = ''
         if (arr.length === 0) {
           console.log(' ')
@@ -59,6 +59,22 @@
         }
       }
 
+      let strArr1 = ['flower', 'flow', 'floght']
+      console.log(longestCommonPrefix(strArr1)) */
+
+      // 这个是最佳的实践，运行时间为0ms（通常小于1ms，可以近似认为为0ms）
+      var longestCommonPrefix = function (strs) {
+        let prefix = strs[0]
+
+        for (let i = 1; i < strs.length; i++) {
+          const str = strs[i]
+          while (prefix && str.indexOf(prefix) !== 0) {
+            prefix = prefix.slice(0, -1)
+          }
+        }
+
+        return prefix
+      }
       let strArr1 = ['flower', 'flow', 'floght']
       console.log(longestCommonPrefix(strArr1))
     </script>
