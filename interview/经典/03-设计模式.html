@@ -2,7 +2,7 @@
  * @Author: liwz
  * @Date: 2024-12-28 15:26:29
  * @LastEditors: liwz
- * @LastEditTime: 2024-12-28 16:40:56
+ * @LastEditTime: 2024-12-30 17:31:47
  * @FilePath: /study_new/interview/经典/03-设计模式.html
  * @Description:
  *
@@ -63,7 +63,30 @@
         descriptor:要修改的目标对象的属性特征，configurable,enumerable,value,writable等属性
         例子：
         //let obj = { age: '18' }; */
-      Object.defineProperty(obj, 'name', { value: 'red' })
+      // Object.defineProperty(obj, 'name', { value: 'red' })
+      let targetOjb1 = {
+        name: 'zhangsan'
+      }
+      let targetOjb2 = {
+        name: 'lisi'
+      }
+      function Observer(oldVal, newVal) {
+        targetOjb2.name = newVal
+        console.log('observer: ', oldVal, newVal)
+      }
+      Object.defineProperty(targetOjb1, 'name', {
+        enumerable: true, //当前属性是否可循环
+        configurable: true, // 当前属性是否可被设置
+        get: function () {
+          return name
+        },
+        set: function (val) {
+          Observer(name, val)
+          name = val
+        }
+      })
+      targetOjb1.name = '111'
+      console.log('targetOjb2: ', targetOjb2)
     </script>
   </body>
 </html>
