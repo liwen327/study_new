@@ -2,7 +2,7 @@
  * @Author: liwz
  * @Date: 2024-12-28 15:26:29
  * @LastEditors: liwz
- * @LastEditTime: 2024-12-30 17:31:47
+ * @LastEditTime: 2024-12-31 11:05:09
  * @FilePath: /study_new/interview/经典/03-设计模式.html
  * @Description:
  *
@@ -87,6 +87,52 @@
       })
       targetOjb1.name = '111'
       console.log('targetOjb2: ', targetOjb2)
+
+      // 四、发布-订阅模式
+      // 发布者内容变化，通过中间层接收并通知订阅者，订阅者收到通知，更新对应的属性和其它模式
+      // 收集订阅:  中间层
+      class Dep {
+        constructor() {
+          this.subs = []
+        }
+        // 向subs中追加订阅者
+        addSub(watcher) {
+          this.subs.push(watcher)
+        }
+        // 中间层去循环通知，务必通知到每一个订阅者
+        notify() {
+          this.subs.forEach(watcher => {
+            watcher.update()
+          })
+        }
+      }
+
+      // 订阅者
+      class Watcher {
+        constructor(cb) {
+          this.cb = cb
+        }
+        // 更新订阅者
+        update() {
+          // 更新cb
+          this.cb()
+        }
+      }
+
+      const w1 = new Watcher(watcher => {
+        console.log('我是1号订阅者')
+      })
+      w1.update() //  这行代码运行后打印出  ：我是1号订阅者   w1是Watcher的实例，可以调用update()
+
+      const w2 = new Watcher(watcher => {
+        console.log('我是2号订阅者')
+      })
+      w2.update()
+
+      let dep = new Dep()
+      dep.addSub(w1)
+      dep.addSub(w2)
+      dep.notify() //通知，更新订阅者 ，watcher是订阅者   Dep是中间层
     </script>
   </body>
 </html>

@@ -1,0 +1,118 @@
+<!--
+ * @Author: liwz
+ * @Date: 2025-01-02 14:49:59
+ * @LastEditors: liwz
+ * @LastEditTime: 2025-01-02 19:25:16
+ * @FilePath: /study_new/interview/经典/05-防抖节流.html
+ * @Description:
+ *
+ * Copyright (c) 2025 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <div>111111</div>
+    <script>
+      /* // 防抖
+      function showTop() {
+        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+        console.log('滚动条位置 ：' + scrollTop)
+      }
+      function debounce(fn, delay) {
+        let timer = null
+
+        return function () {
+          if (timer) {
+            clearTimeout(timer)
+          }
+          timer = setTimeout(fn, delay)
+        }
+      }
+      window.onscroll = debounce(showTop, 1000) */
+
+      // 节流
+      function showTop() {
+        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+        console.log('滚动条位置 ：' + scrollTop)
+      }
+      // 节流函数
+      function throttle(fn, delay) {
+        let valid = true
+
+        return function () {
+          if (!valid) {
+            return false
+          }
+          valid = false
+          setTimeout(function () {
+            fn()
+            valid = true
+          }, delay)
+        }
+      }
+      window.onscroll = throttle(showTop, 1000)
+    </script>
+  </body>
+</html>

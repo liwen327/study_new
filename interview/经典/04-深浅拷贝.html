@@ -1,0 +1,107 @@
+<!--
+ * @Author: liwz
+ * @Date: 2024-12-31 14:34:15
+ * @LastEditors: liwz
+ * @LastEditTime: 2025-01-02 11:26:41
+ * @FilePath: /study_new/interview/经典/04-深浅拷贝.html
+ * @Description:
+ *
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 浅拷贝的方法
+      // 基本类型的拷贝属于地址的复制，复制出一片新栈内存空间
+      let a = 10
+      let b = a
+      console.log(1, a, b)
+      a = 20
+      console.log(2, a, b) //a改变了，b没有改变，所以是复制出来的栈内存空间，a和b指向的内存空间不同
+
+      // 数组
+      let arr = [1, 2, 3, 4]
+      let brr = arr
+      console.log(1, arr, brr) //1  [(1, 2, 3, 4)]     [(1, 2, 3, 4)]
+      arr[1] = 2222
+      console.log(2, arr, brr)
+      //2  [(1,  2222,3, 4)]     [(1,  2222,3, 4)]     arr改了，brr也跟着改，两个变量指向同一个内存空间
+
+      // 对象的浅拷贝
+      let obj = {
+        id: '1',
+        name: 'zhangsan',
+        msg: {
+          age: 18
+        }
+      }
+      let obj1 = obj
+      console.log(1, obj, obj1)
+      obj.name = 'lisi'
+      obj.msg.age = 20
+      console.log(2, obj, obj1) //obj 和obj1都改变了，说明对象的浅拷贝也是指向同一个内存空间，是地址的拷贝，值不变
+
+      // 扩展运算符   对象的属性如果是数组，则是浅拷贝，如果属性是基本数据类型，则是深拷贝
+      let a1 = {
+        name: 'Mike',
+        age: 18,
+        love: ['唱歌', '跳舞']
+      }
+      let b1 = { ...a1 }
+      a1.name = 'John'
+      a1.age = 20
+      a1.love[0] = '打球'
+
+      console.log(2, a1, b1)
+
+      // for...in实现浅拷贝
+      let obj2 = {
+        name: 'zhangsan',
+        age: 18,
+        msg: {
+          msg: '哈哈哈哈'
+        }
+      }
+      let obj3 = {}
+      for (let key in obj2) {
+        obj3[key] = obj2[key]
+      }
+      console.log(1, obj2, obj3)
+      obj2.name = 'xiaoli'
+      obj2.msg.msg = '呵呵呵'
+      console.log(2, obj2, obj3)
+
+      // 深拷贝方法  递归拷贝
+      function deepCopy(obj) {
+        let objClone = Array.isArray(obj) ? [] : {}
+        if (obj && typeof obj === 'object') {
+          for (key in obj) {
+            if (obj.hasOwnProperty(key)) {
+              if (obj[key] && typeof obj[key] == 'object') {
+                objClone[key] = deepCopy(obj[key])
+              } else {
+                objClone[key] = obj[key]
+              }
+            }
+          }
+        }
+        return objClone
+      }
+
+      /* let arrDeep = [[11, 22], 2, 3, 4]
+      console.log(1, arrDeep)
+      let arrDeep1 = deepCopy(arrDeep)
+      console.log(2, arrDeep1) */
+      let arrDeep2 = { name: 'Mike', age: 18, msg: { msg: '你好' } }
+      let arrDeep3 = deepCopy(arrDeep2)
+      console.log(3, arrDeep2, arrDeep3)
+    </script>
+  </body>
+</html>
