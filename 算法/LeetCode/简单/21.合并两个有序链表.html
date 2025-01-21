@@ -1,0 +1,49 @@
+<!--
+ * @Author: liwz
+ * @Date: 2025-01-03 16:55:19
+ * @LastEditors: liwz
+ * @LastEditTime: 2025-01-21 14:46:10
+ * @FilePath: /study_new/算法/LeetCode/简单/21.合并两个有序链表.html
+ * @Description:
+ *
+ * Copyright (c) 2025 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>21.合并两个有序链表</title>
+  </head>
+  <body>
+    <script>
+      // 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+      var mergeTwoLists = function (list1, list2) {
+        let i = list1.length - 1,
+          j = list2.length - 1 //list1和list2的最后一个元素
+        // 生成排序的结果（类似拉链的拉锁）
+        let p = list1.length - 1
+        // 从后向前生成结果数组，类似合并两个有序链表的逻辑
+        while (i >= 0 && j >= 0) {
+          if (list1[i] > list2[j]) {
+            list1[p] = list1[i]
+            i--
+          } else {
+            list1[p] = list2[j]
+            j--
+          }
+          p--
+        }
+        // 可能其中一个数组的指针走到尽头了，而另一个还没走完
+        // 因为我们本身就是在往list1中放元素，所以只需考虑list2是否还剩元素
+        while (j >= 0) {
+          list1[p] = list2[j]
+          j--
+          p--
+        }
+        return list1
+      }
+    </script>
+  </body>
+</html>

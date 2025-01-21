@@ -1,0 +1,71 @@
+<!--
+ * @Author: liwz
+ * @Date: 2025-01-03 11:21:19
+ * @LastEditors: liwz
+ * @LastEditTime: 2025-01-03 14:34:44
+ * @FilePath: /study_new/interview/经典/06-时间复杂度与空间复杂度.html
+ * @Description:
+ *
+ * Copyright (c) 2025 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //一、 一层for循环
+      for (let i = 0; i <= n; i++) {
+        console.log(i)
+      }
+
+      /*
+      i = 0   i<=n console.log()    i++=1
+      i = 1   i<=n console.log()    i++=2
+      i=2 .   i<=n console.log()    i++=3
+      ...
+      i=n .   i<=n console.log()    i++=n+1
+      i=n+1   i<=n false console.log()不执行，
+      所以总的执行次数为循环执行了  n+2次，，consol.log()执行了n+1次，总共是  n+2 + n+1  = 2n + 3次   n趋近于无穷大，所以时间复杂度为O(n)
+
+
+      */
+      //  二、如果循环体中有x++
+      for (let i = 0; i <= n; i++) {
+        x++
+      }
+      /*
+    在如上的循环中，循环体执行了n+1次
+    x++ 执行了n次，则时间复杂度为    n+1 + n  = 2n+1 同样，n趋于无穷大，所以时间复杂度还是为O(n)
+
+    */
+
+      // 三、二重循环
+      for (let i = 1; i <= n; i++) {
+        for (let j = 1; j <= n; j++) {
+          console.log(i, j)
+        }
+      }
+      /*
+      第一重i循环，执行了n+1次，
+      第二重j循环，执行了n(n+1)
+      第二重循环中的console.log()执行了n次
+      即总的执行次数为  n+1 + n(n+1)  + n = n+1 + n平方+n  + n = 3n + n平方+1   即时间复杂度为O(n平方)
+      */
+
+      // 空间复杂度
+      let a = 1
+      let b = 2
+      for (let i = 0; i <= n; i++) {
+        var c = 0
+        // let c = {}
+      }
+      // 以上代码的空间复杂度是O(1)  声明的空间就那么大，不会产生改变的，i=1和i=1000所占的空间就是4字节，不会说数字越大占的空间就越大。
+      // 但是，如果是c={}  那空间复杂度就是O(n) 了，
+    </script>
+  </body>
+</html>
