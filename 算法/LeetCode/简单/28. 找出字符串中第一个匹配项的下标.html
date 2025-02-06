@@ -1,0 +1,54 @@
+<!--
+ * @Author: liwz
+ * @Date: 2025-02-06 16:34:53
+ * @LastEditors: liwz
+ * @LastEditTime: 2025-02-06 16:39:58
+ * @FilePath: /study_new/算法/LeetCode/简单/28. 找出字符串中第一个匹配项的下标.html
+ * @Description:
+
+ *
+ * Copyright (c) 2025 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* 给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串的第一个匹配项的下标（下标从 0 开始）。如果 needle 不是 haystack 的一部分，则返回  -1 。
+
+
+
+      示例 1：
+
+      输入：haystack = "sadbutsad", needle = "sad"
+      输出：0
+      解释："sad" 在下标 0 和 6 处匹配。
+      第一个匹配项的下标是 0 ，所以返回 0 。
+      示例 2：
+
+      输入：haystack = "leetcode", needle = "leeto"
+      输出：-1
+      解释："leeto" 没有在 "leetcode" 中出现，所以返回 -1 。 */
+
+      /**
+       * @param {string} haystack
+       * @param {string} needle
+       * @return {number}
+       */
+      var strStr = function (haystack, needle) {
+        if (haystack.indexOf(needle) > -1) {
+          return haystack.indexOf(needle)
+        } else {
+          return -1
+        }
+      }
+      console.log(strStr('sadbutsad', 'sad'))
+      console.log(strStr('leetcode', 'leeto'))
+    </script>
+  </body>
+</html>
