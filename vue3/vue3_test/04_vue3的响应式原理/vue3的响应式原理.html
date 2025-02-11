@@ -1,0 +1,123 @@
+<!--
+ * @Author: liwz
+ * @Date: 2025-02-11 09:46:03
+ * @LastEditors: liwz
+ * @LastEditTime: 2025-02-11 14:07:06
+ * @FilePath: /study_new/vue3/vue3_test/04_vue3的响应式原理/vue3的响应式原理.html
+ * @Description:
+ *
+ * Copyright (c) 2025 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let person = {
+        name: '张三',
+        age: 18
+      }
+
+      /* // 模拟Vue2中实现响应式
+      let p = {}
+      Object.defineProperty(p, 'name', {
+        get() {
+          console.log('获取person的name', person.name)
+          return person.name
+        },
+        set(value) {
+          console.log('修改了name属性，值为：', value)
+          person.name = value
+        }
+      })
+
+      Object.defineProperty(p, 'age', {
+        get() {
+          console.log('获取person的age', person.age)
+        },
+        set(value) {
+          console.log('修改了age属性，值为：', value)
+          person.age = value
+        }
+      }) */
+
+      // 模拟Vue3中实现响应式，使用Reflect（反射对象，ECMA正在把object上的属性和方法移到Reflect身上），使用Reflect反复修改某一个属性时不会报错，使用defineProperty会报错，导致封装代码中使用太多的try catch
+      let p = new Proxy(person, {
+        // 有人读取p的某个属性时触发
+        get(target, propName) {
+          console.log(`读取了person的${propName}属性`)
+          // return target[propName]
+          return Reflect.get(target, propName)
+        },
+        // 有人修改或新增某个属性时触发
+        set(target, propName, value) {
+          console.log(`修改了person的${propName}属性,我要去更新页面了！`)
+          // target[propName] = value
+          Reflect.set(target, propName, value)
+        },
+        // 有人删除了某个属性时触发
+        deleteProperty(target, propName) {
+          console.log(`删除了person的${propName}属性,我要去更新页面了！`)
+          // return delete target[propName]
+          return Reflect.deleteProperty(target, propName)
+        }
+      })
+
+      let obj = { a: 1, b: 2 }
+      // 如果不使用Reflect，则封装框架时，会看到大量的try catch,对于代码阅读不友好，所以使用Reflect代码Object
+      /* try {
+        Object.defineProperty(obj, 'c', {
+          get() {
+            return 3
+          }
+        })
+        Object.defineProperty(obj, 'c', {
+          get() {
+            return 2
+          }
+        })
+      } catch (error) {
+        console.log(error)
+      } */
+
+      let x1 = Reflect.defineProperty(obj, 'c', {
+        get() {
+          return 3
+        }
+      })
+      let x2 = Reflect.defineProperty(obj, 'c', {
+        get() {
+          return 2
+        }
+      })
+      console.log('x1和x2: ', x1, x2)
+      if (x2) {
+        console.log('某某代码执行成功了')
+      } else {
+        console.log('某某代码执行失败了,没有成功修改c的值') // 打印obj的值，c的值为3，即第90行代码没有修改成功
+      }
+      console.log('@@')
+
+      /* let proxy = new Proxy(data, {
+        // 拦截读取属性值
+        get(target, prop) {
+          return Reflect.get(target, prop)
+        },
+        // 拦截属性值或添加新属性
+        set(target, prop, value) {
+          return Reflect.set(target, prop, value)
+        },
+        // 拦截删除属性
+        deleteProperty(target, prop) {
+          return Reflect.deleteProperty(target, prop)
+        }
+      })
+      proxy.name = 'tom' */
+    </script>
+  </body>
+</html>
