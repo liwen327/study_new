@@ -1,0 +1,111 @@
+<!--
+ * @Author: liwz
+ * @Date: 2025-02-12 16:42:10
+ * @LastEditors: liwz
+ * @LastEditTime: 2025-02-13 14:14:18
+ * @FilePath: /study_new/算法/LeetCode/简单/66.数组转字符串加一.html
+ * @Description:
+ *
+ * Copyright (c) 2025 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+      66. 加一
+      给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一。
+
+      最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。
+
+      你可以假设除了整数 0 之外，这个整数不会以零开头。
+
+      示例 1：
+
+      输入：digits = [1,2,3]
+      输出：[1,2,4]
+      解释：输入数组表示数字 123。
+      示例 2：
+
+      输入：digits = [4,3,2,1]
+      输出：[4,3,2,2]
+      解释：输入数组表示数字 4321。
+      示例 3：
+
+      输入：digits = [9]
+      输出：[1,0]
+      解释：输入数组表示数字 9。
+      加 1 得到了 9 + 1 = 10。
+      因此，结果应该是 [1,0]。
+    */
+
+      /**
+       * @param {number[]} digits
+       * @return {number[]}
+       */
+      /* var plusOne = function (digits) {
+        if (digits.length === 0) {
+          return [1]
+        }
+        let len = digits.length
+        let arr = []
+        // 这是第一次想的，len-2 对于 [9] 不返回[1,0]
+        // if (Number(digits[len - 1]) === 9 && !digits[len - 2]) {
+        //   digits[0] = 1
+        //   digits[1] = 0
+        //   arr = digits
+        // } else if (Number(digits[len - 1]) === 9 && digits[len - 2]) {
+        //   digits[len - 2] = Number(digits[len - 2]) + 1
+        //   digits[len - 1] = 0
+        //   arr = digits
+        // } else {
+        //   let number = Number(digits.join(''))
+        //   let sum = number + 1
+        //   arr = sum.toString().split('')
+        // }
+
+        // 这是第二次更改的，但是leetCode没有通过，60/111的通过率，还有60个用例没有通过
+        let number = Number(digits.join(''))
+        let sum = number + 1
+        arr = sum.toString().split('')
+        for (var i = 0; i < arr.length; i++) {
+          arr[i] = Number(arr[i])
+        }
+
+        console.log('str: ', arr)
+        return arr
+      } */
+
+      // deepseek搜索出来的结果
+      var plusOne = function (digits) {
+        const n = digits.length
+        for (let i = n - 1; i >= 0; i--) {
+          // 从最后一位开始遍历
+          if (digits[i] < 9) {
+            // 如果当前位小于9，直接加1并返回
+            digits[i]++
+            return digits
+          }
+          digits[i] = 0 // 如果当前位是9，加1后变为0，继续处理前一位
+        }
+        console.log('digits: ', digits, [1, ...digits])
+        // 如果所有位都是9，需要在最前面插入1
+        return [1, ...digits]
+      }
+      /* plusOne([1, 2, 3]) //['1', '2', '4']
+      plusOne([4, 3, 2, 1]) //['4', '3', '2', '2']
+      plusOne([9]) //[1,0] */
+
+      // console.log(plusOne([6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3])) // 这个用例通不过，
+      // 输出[6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 0, 0, 0]，但预期为：[6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,4]
+
+      console.log(plusOne([9, 9]))
+    </script>
+  </body>
+</html>

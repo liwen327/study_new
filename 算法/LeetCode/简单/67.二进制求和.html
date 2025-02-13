@@ -1,0 +1,85 @@
+<!--
+ * @Author: liwz
+ * @Date: 2025-02-12 16:42:10
+ * @LastEditors: liwz
+ * @LastEditTime: 2025-02-13 16:17:20
+ * @FilePath: /study_new/算法/LeetCode/简单/67.二进制求和.html
+ * @Description:
+ *
+ * Copyright (c) 2025 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+      67. 二进制求和
+        给你两个二进制字符串 a 和 b ，以二进制字符串的形式返回它们的和。
+
+
+
+        示例 1：
+
+        输入:a = "11", b = "1"
+        输出："100"
+        示例 2：
+
+        输入：a = "1010", b = "1011"
+        输出："10101"
+    */
+      /**
+       * @param {string} a
+       * @param {string} b
+       * @return {string}
+       */
+
+      //  自己的解法
+      /* var addBinary = function (a, b) {
+        let num1 = parseInt(a, 2)
+        let num2 = parseInt(b, 2)
+        let num = num1 + num2
+        let lastStr = num.toString(2)
+        console.log('str1: ', typeof str1)
+        console.log('lastStr: ', lastStr, typeof lastStr)
+        return lastStr
+      } */
+
+      // deepseek的解法
+      var addBinary = function (a, b) {
+        let result = '' // 存储最终结果
+        let carry = 0 // 存储进位
+        let i = a.length - 1 // 指向 a 的末尾
+        let j = b.length - 1 // 指向 b 的末尾
+
+        // 从末尾开始逐位相加
+        while (i >= 0 || j >= 0 || carry > 0) {
+          // 获取当前位的值，如果已经超出字符串范围则视为 0
+          const digitA = i >= 0 ? parseInt(a[i]) : 0
+          const digitB = j >= 0 ? parseInt(b[j]) : 0
+
+          // 计算当前位的和（包括进位）
+          const sum = digitA + digitB + carry
+          // 当前位的结果是 sum % 2
+          result = (sum % 2) + result
+          // 更新进位
+          carry = Math.floor(sum / 2)
+
+          // 移动指针
+          i--
+          j--
+        }
+
+        return result
+      }
+
+      console.log(addBinary('11', '1'))
+      // addBinary('1010', '1011')
+    </script>
+  </body>
+</html>
