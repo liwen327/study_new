@@ -2,30 +2,22 @@
  * @Author: liwz
  * @Date: 2025-01-22 15:12:57
  * @LastEditors: liwz
- * @LastEditTime: 2025-02-18 17:27:53
+ * @LastEditTime: 2025-02-11 16:41:57
  * @FilePath: /study_new/vue3/vue3_test/src/App.vue
  * @Description:
  *
  * Copyright (c) 2025 by ${git_name_email}, All Rights Reserved.
 -->
 <template>
-  <Demo v-if="isShowDemo"> </Demo>
-
-  <button @click="isShowDemo = !isShowDemo">点击去掉Demo组件</button>
+  <Demo> </Demo>
 </template>
 
 <script>
-import { ref } from 'vue'
 import Demo from './components/Demo.vue'
 export default {
   components: { Demo },
   name: 'App',
-  setup(props) {
-    let isShowDemo = ref(true)
-    return {
-      isShowDemo
-    }
-  }
+  setup(props) {}
 }
 </script>
 
