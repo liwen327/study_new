@@ -2,7 +2,7 @@
  * @Author: liwz
  * @Date: 2025-01-22 15:12:57
  * @LastEditors: liwz
- * @LastEditTime: 2025-02-24 10:58:47
+ * @LastEditTime: 2025-02-24 13:51:43
  * @FilePath: /study_new/vue3/vue3_test/src/components/son.vue
  * @Description:
  *
@@ -14,16 +14,11 @@
 </template>
 
 <script>
-import { inject } from 'vue'
 import Dialog from './Dialog.vue'
 export default {
   components: { Dialog },
   name: 'Son',
-  setup() {
-    let car = inject('car')
-    console.log('car: ', car)
-    return { car }
-  }
+  setup() {}
 }
 </script>
 
