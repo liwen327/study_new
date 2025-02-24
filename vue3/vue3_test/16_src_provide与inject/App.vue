@@ -2,7 +2,7 @@
  * @Author: liwz
  * @Date: 2025-01-22 15:12:57
  * @LastEditors: liwz
- * @LastEditTime: 2025-02-24 10:52:14
+ * @LastEditTime: 2025-02-21 16:43:07
  * @FilePath: /study_new/vue3/vue3_test/src/App.vue
  * @Description:
  *
@@ -10,7 +10,7 @@
 -->
 <template>
   <div class="app">
-    我是app组件
+    我是app组件: {{ name }}------{{ price }}
 
     <child />
   </div>
