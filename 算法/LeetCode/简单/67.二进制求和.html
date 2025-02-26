@@ -2,7 +2,7 @@
  * @Author: liwz
  * @Date: 2025-02-12 16:42:10
  * @LastEditors: liwz
- * @LastEditTime: 2025-02-13 16:17:20
+ * @LastEditTime: 2025-02-26 17:48:09
  * @FilePath: /study_new/算法/LeetCode/简单/67.二进制求和.html
  * @Description:
  *
@@ -51,7 +51,7 @@
       } */
 
       // deepseek的解法
-      var addBinary = function (a, b) {
+      /* var addBinary = function (a, b) {
         let result = '' // 存储最终结果
         let carry = 0 // 存储进位
         let i = a.length - 1 // 指向 a 的末尾
@@ -76,6 +76,17 @@
         }
 
         return result
+      } */
+
+      // 百度搜索的结果，使用了BigInt  leetCode也可以通过，bigInt 可以解决超大数相加的问题
+      var addBinary = function (a, b) {
+        let num1 = BigInt(`0b${a}`)
+        let num2 = BigInt(`0b${b}`)
+        let num = num1 + num2
+        let lastStr = num.toString(2)
+        // console.log('str1: ', typeof str1)
+        // console.log('lastStr: ', lastStr, typeof lastStr)
+        return lastStr
       }
 
       console.log(addBinary('11', '1'))
