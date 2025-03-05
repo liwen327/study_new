@@ -1,0 +1,81 @@
+<!--
+ * @Author: liwz
+ * @Date: 2025-03-05 14:38:07
+ * @LastEditors: liwz
+ * @LastEditTime: 2025-03-05 15:34:43
+ * @FilePath: /study_new/算法/LeetCode/简单/链表/203. 移除链表元素.html
+ * @Description:
+ *
+ * Copyright (c) 2025 by ${git_name_email}, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        给你一个链表的头节点
+        head 和一个整数
+        val ，请你删除链表中所有满足
+        Node.val == val 的节点，并返回 新的头节点 。
+      */
+      /**
+       * Definition for singly-linked list.
+       * function ListNode(val, next) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.next = (next===undefined ? null : next)
+       * }
+       */
+      /**
+       * @param {ListNode} head
+       * @param {number} val
+       * @return {ListNode}
+       */
+      // 自己写的，不通过
+      /* var removeElements = function (head, val) {
+        if (!head) return null
+        let p = head
+        while (head && head.val === val) {
+          head = head.next
+        }
+        return head
+      } */
+      // 豆包的答案
+      // 定义链表节点类
+      class ListNode {
+        constructor(val = 0, next = null) {
+          this.val = val
+          this.next = next
+        }
+      }
+
+      function removeElements(head, val) {
+        // 创建一个虚拟头节点，方便处理头节点可能被删除的情况
+        const dummyHead = new ListNode(0)
+        dummyHead.next = head
+
+        // 当前节点指针，初始指向虚拟头节点
+        let current = dummyHead
+
+        // 遍历链表
+        while (current.next !== null) {
+          if (current.next.val === val) {
+            // 如果下一个节点的值等于 val，跳过该节点
+            current.next = current.next.next
+          } else {
+            // 否则，移动到下一个节点
+            current = current.next
+          }
+        }
+
+        // 返回新的头节点
+        return dummyHead.next
+      }
+    </script>
+  </body>
+</html>
