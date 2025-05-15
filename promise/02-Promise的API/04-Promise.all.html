@@ -2,7 +2,7 @@
  * @Author: liwz
  * @Date: 2024-09-23 17:08:27
  * @LastEditors: liwz
- * @LastEditTime: 2024-09-23 17:14:58
+ * @LastEditTime: 2025-04-28 10:00:29
  * @FilePath: /study_new/promise/02-Promise的API/04-Promise.all.html
  * @Description:
 
@@ -22,11 +22,11 @@
       let p1 = new Promise((resolve, reject) => {
         resolve('ok')
       })
-      // let p2 = Promise.resolve('哈哈')
-      let p2 = Promise.reject('error')
+      let p2 = Promise.resolve('哈哈')
+      // let p2 = Promise.reject('error')
       let p3 = Promise.resolve('oh,yeah!')
 
-      let result = Promise.all([p1, p2, p3])
+      let result = Promise.all([p1, p3])
       console.log(result)
     </script>
   </body>
